@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ophtalmologique - UMED</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <img id="headerLogo" alt="UMED Logo" class="header-logo">
+            <h1>Fiche Ophtalmologique</h1>
+        </header>
+
+        <main class="app-main">
+            <section class="form-section">
+                <form id="ophtalmoForm">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="entreprise">Entreprise</label>
+                            <input type="text" id="entreprise" name="entreprise" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field full">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field full">
+                            <label for="prenoms">Prénoms</label>
+                            <input type="text" id="prenoms" name="prenoms" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input type="date" id="dateNaissance" name="dateNaissance" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="age">Âge (auto)</label>
+                            <input type="text" id="age" name="age" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>Sexe</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="sexe" value="F" required> F</label>
+                                <label class="radio-label"><input type="radio" name="sexe" value="M"> M</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">SANS CORRECTION</div>
+                    
+                    <div class="form-row triple">
+                        <div class="form-field label-col"></div>
+                        <div class="form-field data-col">
+                            <label>OEIL DROIT</label>
+                        </div>
+                        <div class="form-field data-col">
+                            <label>OEIL GAUCHE</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-field label-col">
+                            <span>Acuité Visuelle de Loin</span>
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avlSansDroit" name="avlSansDroit" placeholder="/ 10">
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avlSansGauche" name="avlSansGauche" placeholder="/ 10">
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-field label-col">
+                            <span>Acuité Visuelle de Près</span>
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avpSansDroit" name="avpSansDroit" placeholder="/ 10">
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avpSansGauche" name="avpSansGauche" placeholder="/ 10">
+                        </div>
+                    </div>
+
+                    <div class="section-title">AVEC CORRECTION</div>
+
+                    <div class="form-row triple">
+                        <div class="form-field label-col">
+                            <span>Acuité Visuelle de Loin</span>
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avlAvecDroit" name="avlAvecDroit" placeholder="/ 10">
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avlAvecGauche" name="avlAvecGauche" placeholder="/ 10">
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-field label-col">
+                            <span>Acuité Visuelle de Près</span>
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avpAvecDroit" name="avpAvecDroit" placeholder="/ 10">
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="avpAvecGauche" name="avpAvecGauche" placeholder="/ 10">
+                        </div>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-field label-col">
+                            <span>EXAMEN DU FOND D'OEIL</span>
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="examenFondDroit" name="examenFondDroit">
+                        </div>
+                        <div class="form-field data-col">
+                            <input type="text" id="examenFondGauche" name="examenFondGauche">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field full">
+                            <label for="conclusion">CONCLUSION</label>
+                            <input type="text" id="conclusion" name="conclusion">
+                        </div>
+                    </div>
+
+                    <div class="button-row">
+                        <button type="submit" class="btn-primary">Générer la Fiche</button>
+                        <button type="button" id="resetBtn" class="btn-secondary">Réinitialiser</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="preview-section" id="previewSection">
+                <div class="preview-controls">
+                    <span>Aperçu</span>
+                    <button id="printBtn" class="btn-primary">Imprimer</button>
+                </div>
+                <div id="printableArea" class="print-area"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="logo.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

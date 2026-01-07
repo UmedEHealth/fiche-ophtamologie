@@ -1,0 +1,674 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f4f8;
+    color: #000;
+    line-height: 1.4;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.app-header {
+    background-color: #4A90C8;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-logo {
+    height: 50px;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.app-header h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.app-main {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.form-section {
+    flex: 1;
+    max-width: 500px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.form-row.triple {
+    display: flex;
+    gap: 10px;
+}
+
+.form-field {
+    flex: 1;
+}
+
+.form-field.full {
+    flex: 1;
+}
+
+.form-field.label-col {
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+.form-field.data-col {
+    flex: 1;
+    text-align: center;
+}
+
+.form-field label {
+    display: block;
+    font-size: 12px;
+    color: #4A90C8;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.form-field.data-col label {
+    font-size: 11px;
+    text-align: center;
+}
+
+.form-field span {
+    font-size: 12px;
+    color: #333;
+}
+
+.form-field input[type="text"],
+.form-field input[type="date"],
+.form-field input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #4A90C8;
+}
+
+.form-field input[readonly] {
+    background-color: #f5f5f5;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    padding: 8px 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    width: 14px;
+    height: 14px;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #4A90C8;
+    margin: 15px 0 8px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #4A90C8;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #4A90C8;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #3A7AB0;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #d0d0d0;
+}
+
+.preview-section {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.preview-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.preview-controls span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4A90C8;
+}
+
+.print-area {
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.fiche {
+    width: 210mm;
+    padding: 12mm 15mm;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+    position: relative;
+}
+
+.fiche-header-bar {
+    height: 16px;
+    background-color: #4A90C8;
+    margin-bottom: 18px;
+}
+
+.fiche-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fiche-logo img {
+    height: 60px;
+}
+
+.fiche-line {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 5px;
+    line-height: 1.8;
+}
+
+.fiche-line .label {
+    white-space: nowrap;
+}
+
+.fiche-line .dots {
+    flex: 1;
+    border-bottom: 1px dotted #000;
+    margin: 0 3px;
+    min-width: 50px;
+    text-align: right;
+}
+
+.fiche-line-double {
+    display: flex;
+    margin-bottom: 5px;
+    line-height: 1.8;
+}
+
+.fiche-line-double .part {
+    display: flex;
+    align-items: baseline;
+    flex: 1;
+}
+
+.fiche-line-double .part:first-child {
+    margin-right: 30px;
+}
+
+.fiche-line-double .label {
+    white-space: nowrap;
+}
+
+.fiche-line-double .dots {
+    flex: 1;
+    border-bottom: 1px dotted #000;
+    margin: 0 3px;
+    text-align: right;
+}
+
+.fiche-data {
+    margin-top: 18px;
+}
+
+.fiche-data-header {
+    display: flex;
+    margin-bottom: 3px;
+}
+
+.fiche-data-header .col-label {
+    flex: 2;
+}
+
+.fiche-data-header .col-data {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.fiche-data-section-title {
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 3px;
+}
+
+.fiche-data-row {
+    display: flex;
+    margin-bottom: 2px;
+    line-height: 1.6;
+}
+
+.fiche-data-row .col-label {
+    flex: 2;
+}
+
+.fiche-data-row .col-data {
+    flex: 1;
+    text-align: center;
+}
+
+.fiche-conclusion {
+    display: flex;
+    align-items: baseline;
+    margin-top: 18px;
+    line-height: 1.8;
+}
+
+.fiche-conclusion .label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.fiche-conclusion .dots {
+    flex: 1;
+    border-bottom: 1px dotted #000;
+    margin-left: 5px;
+}
+
+.fiche-separator {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px dashed #999;
+}
+
+.fiche-footer {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 2px solid #C9A227;
+    text-align: center;
+    font-size: 8pt;
+    line-height: 1.5;
+}
+
+.fiche-footer-title {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+@media print {
+    body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .app-header,
+    .form-section,
+    .preview-controls {
+        display: none !important;
+    }
+
+    .app-container {
+        max-width: 100%;
+    }
+
+    .app-main {
+        display: block;
+        padding: 0;
+    }
+
+    .preview-section {
+        padding: 0;
+        background: #fff;
+    }
+
+    .print-area {
+        box-shadow: none;
+    }
+
+    .fiche {
+        width: 100%;
+        padding: 10mm 12mm;
+        page-break-inside: avoid;
+    }
+
+    .fiche-separator {
+        page-break-after: always;
+        border: none;
+        margin: 0;
+        height: 0;
+    }
+
+    @page {
+        size: A4;
+        margin: 5mm;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .app-main {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .form-section {
+        max-width: 100%;
+    }
+
+    .preview-section {
+        margin-top: 20px;
+    }
+
+    .fiche {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .fiche-line-double {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .fiche-line-double .part:first-child {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-header {
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-logo {
+        height: 40px;
+    }
+
+    .app-header h1 {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .app-main {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-row.triple {
+        flex-direction: row;
+    }
+
+    .form-field.label-col {
+        flex: 1.5;
+    }
+
+    .form-field.data-col {
+        flex: 1;
+    }
+
+    .form-field.data-col label {
+        font-size: 10px;
+    }
+
+    .section-title {
+        font-size: 11px;
+    }
+
+    .button-row {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .preview-controls {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .preview-controls .btn-primary {
+        width: 100%;
+    }
+
+    .fiche {
+        padding: 15px;
+        font-size: 10pt;
+    }
+
+    .fiche-header-bar {
+        height: 12px;
+        margin-bottom: 12px;
+    }
+
+    .fiche-logo {
+        margin-bottom: 15px;
+    }
+
+    .fiche-logo img {
+        height: 45px;
+    }
+
+    .fiche-line,
+    .fiche-line-double {
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .fiche-line .label,
+    .fiche-line-double .label {
+        font-size: 10pt;
+    }
+
+    .fiche-data {
+        margin-top: 12px;
+    }
+
+    .fiche-data-header .col-data {
+        font-size: 9pt;
+    }
+
+    .fiche-data-section-title {
+        font-size: 10pt;
+        margin-top: 10px;
+    }
+
+    .fiche-data-row {
+        font-size: 9pt;
+    }
+
+    .fiche-data-row .col-label {
+        flex: 1.5;
+    }
+
+    .fiche-conclusion {
+        margin-top: 12px;
+    }
+
+    .fiche-footer {
+        margin-top: 20px;
+        font-size: 7pt;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .app-header {
+        padding: 10px;
+    }
+
+    .header-logo {
+        height: 35px;
+    }
+
+    .app-header h1 {
+        font-size: 16px;
+    }
+
+    .app-main {
+        padding: 8px;
+    }
+
+    .form-field label {
+        font-size: 11px;
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="date"],
+    .form-field input[type="number"] {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .form-row.triple {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-row.triple .form-field.label-col {
+        text-align: left;
+    }
+
+    .form-row.triple .form-field.data-col {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .form-row.triple .form-field.data-col label {
+        display: none;
+    }
+
+    .section-title {
+        font-size: 10px;
+        margin: 10px 0 5px 0;
+    }
+
+    .radio-group {
+        gap: 20px;
+    }
+
+    .fiche {
+        padding: 10px;
+        font-size: 9pt;
+    }
+
+    .fiche-header-bar {
+        height: 10px;
+        margin-bottom: 10px;
+    }
+
+    .fiche-logo img {
+        height: 35px;
+    }
+
+    .fiche-line,
+    .fiche-line-double {
+        margin-bottom: 6px;
+        line-height: 1.5;
+    }
+
+    .fiche-line .label,
+    .fiche-line-double .label {
+        font-size: 9pt;
+    }
+
+    .fiche-line .dots,
+    .fiche-line-double .dots {
+        min-width: 30px;
+        font-size: 9pt;
+    }
+
+    .fiche-data-header .col-data {
+        font-size: 8pt;
+    }
+
+    .fiche-data-section-title {
+        font-size: 9pt;
+    }
+
+    .fiche-data-row {
+        font-size: 8pt;
+        line-height: 1.4;
+    }
+
+    .fiche-conclusion .label {
+        font-size: 9pt;
+    }
+
+    .fiche-footer {
+        margin-top: 15px;
+        padding-top: 8px;
+        font-size: 6pt;
+        line-height: 1.4;
+    }
+}
