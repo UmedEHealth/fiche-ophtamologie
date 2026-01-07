@@ -605,7 +605,10 @@ body {
     }
 
     .form-row.triple .form-field.data-col label {
-        display: none;
+        display: block;
+        font-size: 9px;
+        font-weight: bold;
+        margin-bottom: 3px;
     }
 
     .section-title {
