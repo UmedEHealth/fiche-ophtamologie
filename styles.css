@@ -94,7 +94,11 @@ body {
 }
 
 .form-field.data-col .mobile-label {
-    display: none;
+    display: block;
+    font-weight: bold;
+    color: #4A90C8;
+    text-transform: uppercase;
+    font-size: 10px;
 }
 
 .form-field span {
