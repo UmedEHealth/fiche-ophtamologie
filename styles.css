@@ -47,7 +47,32 @@ body {
 
 .form-section {
     flex: 1;
-    max-width: 500px;
+    max-width: 100%;
+}
+
+.form-section.dual-forms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-wrapper {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4A90C8;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4A90C8;
 }
 
 .form-row {
@@ -347,7 +372,8 @@ body {
 .fiche-separator {
     margin: 25px 0;
     border: none;
-    border-top: 1px dashed #999;
+    border-top: 2px dashed #999;
+    page-break-after: avoid;
 }
 
 .fiche-footer {
@@ -397,15 +423,16 @@ body {
 
     .fiche {
         width: 100%;
-        padding: 10mm 12mm;
+        padding: 8mm 10mm;
         page-break-inside: avoid;
     }
 
+    .fiche:first-child {
+        margin-bottom: 10mm;
+    }
+
     .fiche-separator {
-        page-break-after: always;
-        border: none;
-        margin: 0;
-        height: 0;
+        display: none;
     }
 
     @page {
@@ -422,6 +449,10 @@ body {
 
     .form-section {
         max-width: 100%;
+    }
+
+    .form-wrapper {
+        min-width: 100%;
     }
 
     .preview-section {

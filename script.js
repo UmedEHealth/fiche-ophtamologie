@@ -1,26 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('ophtalmoForm');
+    const form1 = document.getElementById('ophtalmoForm1');
+    const form2 = document.getElementById('ophtalmoForm2');
+    const generateBtn = document.getElementById('generateBtn');
     const resetBtn = document.getElementById('resetBtn');
     const printBtn = document.getElementById('printBtn');
     const printableArea = document.getElementById('printableArea');
-    const dateNaissanceInput = document.getElementById('dateNaissance');
-    const ageInput = document.getElementById('age');
+    const dateNaissanceInput1 = document.getElementById('dateNaissance1');
+    const ageInput1 = document.getElementById('age1');
+    const dateNaissanceInput2 = document.getElementById('dateNaissance2');
+    const ageInput2 = document.getElementById('age2');
     const headerLogo = document.getElementById('headerLogo');
 
     if (typeof LOGO_BASE64 !== 'undefined') {
         headerLogo.src = LOGO_BASE64;
     }
 
-    dateNaissanceInput.addEventListener('change', calculateAge);
+    dateNaissanceInput1.addEventListener('change', () => calculateAge('1'));
+    dateNaissanceInput2.addEventListener('change', () => calculateAge('2'));
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        generateFiche();
+    generateBtn.addEventListener('click', function() {
+        if (form1.checkValidity() && form2.checkValidity()) {
+            generateBothFiches();
+        } else {
+            alert('Veuillez remplir tous les champs obligatoires des deux fiches.');
+        }
     });
 
     resetBtn.addEventListener('click', function() {
-        form.reset();
-        ageInput.value = '';
+        form1.reset();
+        form2.reset();
+        ageInput1.value = '';
+        ageInput2.value = '';
         printableArea.innerHTML = '';
     });
 
@@ -28,7 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.print();
     });
 
-    function calculateAge() {
+    function calculateAge(formNumber) {
+        const dateNaissanceInput = document.getElementById('dateNaissance' + formNumber);
+        const ageInput = document.getElementById('age' + formNumber);
+
         const birthDate = new Date(dateNaissanceInput.value);
         if (isNaN(birthDate.getTime())) {
             ageInput.value = '';
@@ -59,31 +72,38 @@ document.addEventListener('DOMContentLoaded', function() {
         return value + '/10';
     }
 
-    function generateFiche() {
-        const sexeRadio = document.querySelector('input[name="sexe"]:checked');
-        const formData = {
-            date: formatDate(document.getElementById('date').value),
-            entreprise: document.getElementById('entreprise').value,
-            nom: document.getElementById('nom').value,
-            prenoms: document.getElementById('prenoms').value,
-            dateNaissance: formatDate(document.getElementById('dateNaissance').value),
-            age: document.getElementById('age').value,
+    function getFormData(formNumber) {
+        const sexeRadio = document.querySelector('input[name="sexe' + formNumber + '"]:checked');
+        return {
+            date: formatDate(document.getElementById('date' + formNumber).value),
+            entreprise: document.getElementById('entreprise' + formNumber).value,
+            nom: document.getElementById('nom' + formNumber).value,
+            prenoms: document.getElementById('prenoms' + formNumber).value,
+            dateNaissance: formatDate(document.getElementById('dateNaissance' + formNumber).value),
+            age: document.getElementById('age' + formNumber).value,
             sexe: sexeRadio ? sexeRadio.value : '',
-            avlSansDroit: formatAcuity(document.getElementById('avlSansDroit').value),
-            avpSansDroit: formatAcuity(document.getElementById('avpSansDroit').value),
-            avlSansGauche: formatAcuity(document.getElementById('avlSansGauche').value),
-            avpSansGauche: formatAcuity(document.getElementById('avpSansGauche').value),
-            avlAvecDroit: formatAcuity(document.getElementById('avlAvecDroit').value),
-            avpAvecDroit: formatAcuity(document.getElementById('avpAvecDroit').value),
-            avlAvecGauche: formatAcuity(document.getElementById('avlAvecGauche').value),
-            avpAvecGauche: formatAcuity(document.getElementById('avpAvecGauche').value),
-            examenFondDroit: document.getElementById('examenFondDroit').value || '............',
-            examenFondGauche: document.getElementById('examenFondGauche').value || '............',
-            conclusion: document.getElementById('conclusion').value || ''
+            avlSansDroit: formatAcuity(document.getElementById('avlSansDroit' + formNumber).value),
+            avpSansDroit: formatAcuity(document.getElementById('avpSansDroit' + formNumber).value),
+            avlSansGauche: formatAcuity(document.getElementById('avlSansGauche' + formNumber).value),
+            avpSansGauche: formatAcuity(document.getElementById('avpSansGauche' + formNumber).value),
+            avlAvecDroit: formatAcuity(document.getElementById('avlAvecDroit' + formNumber).value),
+            avpAvecDroit: formatAcuity(document.getElementById('avpAvecDroit' + formNumber).value),
+            avlAvecGauche: formatAcuity(document.getElementById('avlAvecGauche' + formNumber).value),
+            avpAvecGauche: formatAcuity(document.getElementById('avpAvecGauche' + formNumber).value),
+            examenFondDroit: document.getElementById('examenFondDroit' + formNumber).value || '............',
+            examenFondGauche: document.getElementById('examenFondGauche' + formNumber).value || '............',
+            conclusion: document.getElementById('conclusion' + formNumber).value || ''
         };
+    }
 
-        const ficheHTML = createFicheHTML(formData);
-        printableArea.innerHTML = ficheHTML;
+    function generateBothFiches() {
+        const formData1 = getFormData('1');
+        const formData2 = getFormData('2');
+
+        const fiche1HTML = createFicheHTML(formData1);
+        const fiche2HTML = createFicheHTML(formData2);
+
+        printableArea.innerHTML = fiche1HTML + '<hr class="fiche-separator">' + fiche2HTML;
         printableArea.scrollIntoView({ behavior: 'smooth' });
     }
 
